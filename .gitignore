@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ElasticSearch_ELK_NEST/bin/Debug/net8.0
+/ElasticSearch_ELK_NEST/obj
