@@ -137,23 +137,20 @@
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
-    int pageSize = 20;
+    int pageSize = 10;
 }
 
-
 <a asp-action="Index"
-   asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageIndex - 1)"
    asp-route-pageSize="@(pageSize)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-searchString="@ViewData["SearchString"]"
    class="btn btn-default @prevDisabled">
     Previous
 </a>
 <a asp-action="Index"
-   asp-route-sortOrder="@ViewData["CurrentSort"]"
    asp-route-pageNumber="@(Model.PageIndex + 1)"
    asp-route-pageSize="@(pageSize)"
-   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   asp-route-searchString="@ViewData["SearchString"]"
    class="btn btn-default @nextDisabled">
     Next
 </a>

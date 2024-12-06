@@ -1,6 +1,7 @@
 using ElasticSearch_ELK_NEST.Models;
 using ElasticSearch_ELK_NEST.Service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ElasticSearch_ELK_NEST.Controllers
 {
@@ -16,15 +17,15 @@ namespace ElasticSearch_ELK_NEST.Controllers
         }
 
         public async Task<IActionResult> Index(
-                string searchString = null,
                 int pageNumber = 1,
-                int pageSize = 20)
+                int pageSize = 10,
+                string searchString = null)
         {
-            ViewData["CurrentFilter"] = searchString;
+            ViewData["SearchString"] = searchString;
 
             IReadOnlyCollection<AirbnbData> airbnbDatas = new List<AirbnbData>();
 
-            var matchAll = await _searchService.MatchAll(pageNumber, _maxSize);
+            var matchAll = await _searchService.SearchDocumentsByName(pageNumber, _maxSize, searchString);
 
             if (matchAll != null && matchAll.Documents.Any())
                 airbnbDatas = matchAll.Documents;

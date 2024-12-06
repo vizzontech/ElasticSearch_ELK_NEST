@@ -7,7 +7,7 @@ namespace ElasticSearch_ELK_NEST.Service
     {
         Task<ISearchResponse<AirbnbData>> GetById(string id);
         Task<ISearchResponse<AirbnbData>> GetByPrice(string price);
-        Task<ISearchResponse<AirbnbData>> MatchAll(int pageNumber, int maxSize);
+        Task<ISearchResponse<AirbnbData>> SearchDocumentsByName(int pageNumber, int maxSize, string name);
     }
 
     public class SearchService :  ISearchService
@@ -46,11 +46,14 @@ namespace ElasticSearch_ELK_NEST.Service
             return searchResponse;
         }
 
-        public async Task<ISearchResponse<AirbnbData>> MatchAll(int pageNumber, int maxSize)
+        public async Task<ISearchResponse<AirbnbData>> SearchDocumentsByName(int pageNumber, int maxSize, string name)
         {
             var searchResponse = await _searchClient.SearchAsync<AirbnbData>(s => s
                     .Query(q => q
-                           .MatchAll(m => m)
+                           .Match(m => m
+                           .Field(f => f.name).Query(name)
+                           .Fuzziness (Fuzziness.Auto)
+                           )
                         )
                         .From(pageNumber)
                         .Size(maxSize)
