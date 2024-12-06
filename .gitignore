@@ -6,3 +6,4 @@
 /ElasticSearch_ELK_NEST/obj
 /.vs/ElasticSearch_ELK_NEST/FileContentIndex
 /.vs/ElasticSearch_ELK_NEST/v17
+*.config
