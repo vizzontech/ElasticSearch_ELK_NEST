@@ -1,4 +1,6 @@
+using ElasticSearch_ELK_NEST.Models;
 using ElasticSearch_ELK_NEST.Service;
+using Microsoft.Extensions.DependencyInjection;
 using Nest;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,8 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var settings = new ConnectionSettings(new Uri("http://localhost:9200"))
-    .DefaultIndex("ab_nyc_2019")
+var appSettings = new ElasticSearchSettings();
+builder.Configuration.GetSection("ElasticSearchSettings").Bind(appSettings);
+var settings = new ConnectionSettings(new Uri(appSettings.Url))
+    .DefaultIndex(appSettings.Index)
     .DisableDirectStreaming(true);
 
 builder.Services.AddSingleton<IElasticClient>(new ElasticClient(settings));
