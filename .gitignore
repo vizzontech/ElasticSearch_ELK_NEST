@@ -8,3 +8,6 @@
 /.vs/ElasticSearch_ELK_NEST/v17
 *.config
 /.vs/ElasticSearch_ELK_NEST/DesignTimeBuild/.dtbcache.v2
+/.vs/ProjectEvaluation
+/.vs/ProjectEvaluation/elasticsearch_elk_nest.metadata.v7.bin
+/.vs/ProjectEvaluation/elasticsearch_elk_nest.projects.v7.bin
