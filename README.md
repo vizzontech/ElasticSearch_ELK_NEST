@@ -21,3 +21,24 @@ docker ps --filter "name=elasticsearch" --filter "name=kibana" --filter "name=lo
 
 ```
 
+You can view services in the brower 
+
+Elastic search
+http://localhost:9200/
+
+Logstash
+http://localhost:9600/
+
+Kibana
+http://localhost:5601/
+
+# ElasticSearch_ELK_NEST project 
+This standard .NET MVC project showcases the New York City Airbnb Open Data. The sample CSV data is ingested into Elasticsearch using Logstash during the initial setup of the dependencies, ensuring that the index and sample data are ready for use in this demo application. 
+
+When the project is run, a list of sample data from ElasticSearch should be displayed.
+
+<img width="1777" alt="image" src="https://github.com/user-attachments/assets/229e0779-8e47-48a9-bf36-aade960b5c0e" />
+
+You can search by name 
+
+<img width="1758" alt="image" src="https://github.com/user-attachments/assets/80b4cdef-d235-48b1-b504-e000734c32aa" />
